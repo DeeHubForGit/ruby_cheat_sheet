@@ -23,8 +23,64 @@ a:focus-visible {
     outline-offset: 2px;
 }
 
-/* Preserve readability for code blocks if added later */
-code,
-pre {
-    font-family: Consolas, Monaco, "Courier New", monospace;
+/* Inline code (if you use <code> inside sentences) */
+code {
+  font-family: Consolas, Monaco, "Courier New", monospace;
 }
+
+/* Code blocks */
+pre {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  margin: 0 0 0.75rem 0;        /* space after the block only */
+  padding: 0.75rem;
+  background-color: powderblue; /* pick ONE colour */
+  border-radius: 6px;
+
+  display: inline-block;        /* shrink background to content width */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Remove any chance of extra spacing from the <code> inside <pre> */
+pre code {
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+/* Normalise vertical spacing (exclude pre) */
+h2, h3, h4, p, ul {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Lists usually need a bit more left indent but not huge spacing */
+ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Code block spacing */
+pre {
+  margin-bottom: 1rem; /* give code blocks a bit of breathing room */
+}
+
+h1 {
+  margin: 1.5rem 0 1rem;
+}
+
+h2 {
+  margin: 1.25rem 0 0.75rem;
+}
+
+h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+h4 {
+  margin: 0.75rem 0 0.25rem;
+}
+
