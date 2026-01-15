@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Cheat Sheet - Page 2</title>
+    <link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+    <h1>Ruby Cheat Sheet - Page 2</h1>
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="cheat-sheet-page1.html">Page 1</a> |
+        <a href="cheat-sheet-page2.html">Page 2</a>
+    </p>
+    <div class="cheatsheet">
+        <div class="block">
+            <h3>Truthiness (nil vs false) (Ruby-specific)</h3>
+            <ul>
+                <li>Only false and nil are treated as false</li>
+                <li>Everything else is treated as true</li>
+                <li>Commonly used in <code>if</code>, <code>elsif</code>, <code>unless</code></li>
+            </ul>
+            <pre><code>false   <span class="c"># false</span>
+nil     <span class="c"># false</span>
+
+0       <span class="c"># true</span>
+""      <span class="c"># true (empty string)</span>
+[]      <span class="c"># true (empty array)</span>
+
+if value
+  puts "Runs unless value is false or nil"
+end</code></pre>
+        </div>
+        <div class="block">
+            <h3>Safe Navigation (&.)</h3>
+            <ul>
+                <li>Used to safely call methods on something that might be <code>nil</code></li>
+                <li>Prevents <code>NoMethodError</code></li>
+                <li>Returns <code>nil</code> if the object is <code>nil</code></li>
+            </ul>
+            <pre><code>user = nil
+
+user.name
+<span class="c"># NoMethodError</span>
+
+user&.name
+<span class="c"># nil</span>
+
+order&.customer&.email
+<span class="c"># Safe even if order or customer is nil</span></code></pre>
+        </div>
+        <div class="block">
+            <h3>Exception Handling (begin / rescue / ensure)</h3>
+            <ul>
+                <li>Used to handle runtime errors safely</li>
+                <li>Prevents program crashes</li>
+                <li><code>rescue</code> catches errors</li>
+                <li><code>ensure</code> always runs (optional)</li>
+            </ul>
+            <pre><code>begin
+  result = 10 / 0
+rescue ZeroDivisionError
+  puts "Cannot divide by zero"
+ensure
+  puts "Done"
+end
+
+<span class="c"># Rescue shorthand (common)</span>
+result = 10 / value rescue nil</code></pre>
+        </div>
+        <div class="block">
+            <h3>Ranges (.. and ...)</h3>
+            <ul>
+                <li>Represent a sequence of values</li>
+                <li>Commonly used in loops and conditionals</li>
+                <li><code>..</code> includes the end value</li>
+                <li><code>...</code> excludes the end value</li>
+            </ul>
+            <pre><code><span class="c"># Inclusive range</span>
+(1..5).each do |n|
+  puts n
+end
+
+<span class="c"># Exclusive range</span>
+(1...5).each do |n|
+  puts n
+end
+
+<span class="c"># Range in condition</span>
+age = 25
+puts "Adult" if (18..65).include?(age)</code></pre>
+        </div>
+        <div class="block">
+            <h3>Classes</h3>
+            <ul>
+                <li>Blueprints for creating objects</li>
+                <li>Group data (variables) and behaviour (methods)</li>
+                <li>Used to represent things like users, orders or settings</li>
+            </ul>
+            <pre><code>class Order
+    def total
+        44.50
+    end
+end</code></pre>
+        </div>
+        <div class="block">
+            <h3>Accessors (attr_reader, attr_writer, attr_accessor)</h3>
+            <ul>
+                <li>Create getter and/or setter methods automatically</li>
+                <li>Reduce repetitive code in classes</li>
+                <li>Used inside classes</li>
+            </ul>
+            <pre><code>class User
+  attr_reader :name        <span class="c"># getter only</span>
+  attr_writer :email       <span class="c"># setter only</span>
+  attr_accessor :age       <span class="c"># getter and setter</span>
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+end</code></pre>
+        </div>
+        <div class="block">
+            <h3>Modules (namespacing & mixins)</h3>
+            <ul>
+                <li>Group related code and share behaviour</li>
+                <li>Used for <strong>namespacing</strong> (organising code)</li>
+                <li>Used as <strong>mixins</strong> (shared methods)</li>
+                <li>Cannot be instantiated</li>
+            </ul>
+            <pre><code><span class="c"># Namespacing</span>
+module Payments
+  TAX_RATE = 0.1
+end
+
+Payments::TAX_RATE
+
+<span class="c"># Mixin</span>
+module Printable
+  def print_name
+    puts name
+  end
+end
+
+class User
+  include Printable
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end</code></pre>
+        </div>
+        <div class="block">
+            <h2>Reusable Code</h2>
+            <div class="gems">
+                <h3>Gems</h3>
+                <ul>
+                    <li>Reusable libraries that add features to Ruby</li>
+                    <li>Used to avoid writing everything from scratch</li>
+                    <li>Installed using the gem command</li>
+                    <li>Commonly used in Ruby and Rails projects</li>
+                </ul>
+                <pre><code>gem install rails</code></pre>
+                <!-- NO UNNECESSARY DETAIL
+                <p><b>Common gems include:</b></p>
+                <ul>
+                    <li><strong>Rails</strong>: Web application framework.</li>
+                    <li><strong>RSpec</strong>: Testing Ruby code.</li>
+                    <li><strong>Devise</strong>: User authentication.</li>
+                    <li><strong>Puma</strong>: A web server for Ruby and Rails applications.</li>
+                </ul>
+                <p><b>Common Rails gems include:</b></p>
+                <ul>
+                    <li><strong>Active Record</strong>: Database interaction.</li>
+                    <li><strong>Action Mailer</strong>: Sending emails.</li>
+                    <li><strong>Active Job</strong>: Background job processing.</li>
+                    <li><strong>Active Storage</strong>: File uploads.</li>
+                </ul>
+                -->
+            </div>
+        </div>
+        <div class="block">
+            <h4>Require / require_relative</h4>
+            <ul>
+                <li><code>require</code> loads installed libraries (standard library or gems)</li>
+                <li><code>require_relative</code> loads a local file relative to the current file's location</li>
+                <li>You usually put <code>require</code> lines at the top of a file</li>
+            </ul>
+            <pre><code>require "json"            <span class="c"># installed library</span>
+require_relative "helpers"      <span class="c"># local file</span>
+
+data = JSON.parse('{"name":"Joe"}')
+puts data["name"]
+</code></pre>
+        </div>
+        <div class="block">
+            <h4>Rails</h4>
+            <ul>
+                <li>Web application framework written in Ruby</li>
+                <li>Follows the <a href="mvc.html">MVC (Model View Controller)</a> pattern</li>
+                <li>Provides structure for building web apps quickly</li>
+                <li>Distributed as a gem but made up of many smaller gems</li>
+            </ul>
+            <pre><code>gem install rails</code></pre>
+        </div>
+    </div>
+</body>
+</html>
