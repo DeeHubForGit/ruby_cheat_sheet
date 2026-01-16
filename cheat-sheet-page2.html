@@ -9,15 +9,15 @@
 <body>
     <div class="topbar">
         <h1>Ruby Cheat Sheet - Page 2</h1>
-        <div class="nav"><a href="index.html">Home</a> | <a href="cheat-sheet-page1.html">Page 1</a> | <a href="cheat-sheet-page2.html">Page 2</a></div>
+        <div class="nav"><a href="index.html">Home</a> | <a href="cheat-sheet-page1.html">Page 1</a> | <b>Page 2</b></div>
     </div>
     <div class="cheatsheet">
         <div class="block">
-            <h3>Truthiness (nil vs false) (Ruby-specific)</h3>
+            <h2>Truthiness (nil vs false) (Ruby-specific)</h2>
             <ul>
                 <li>Only false and nil are treated as false</li>
                 <li>Everything else is treated as true</li>
-                <li>Commonly used in <code>if</code>, <code>elsif</code>, <code>unless</code></li>
+                <li>Commonly used in <code>if</code>, <code>elsif</code>, <code>unless</code> (opposite of if)</li>
             </ul>
             <pre><code>false   <span class="c"># false</span>
 nil     <span class="c"># false</span>
@@ -28,10 +28,12 @@ nil     <span class="c"># false</span>
 
 if value
   puts "Runs unless value is false or nil"
-end</code></pre>
+end
+
+puts "Runs" unless value</code></pre>
         </div>
         <div class="block">
-            <h3>Safe Navigation (&.)</h3>
+            <h2>Safe Navigation (&.)</h2>
             <ul>
                 <li>Used to safely call methods on values that might be <code>nil</code></li>
                 <li>Prevents <code>NoMethodError</code></li>
@@ -49,7 +51,7 @@ order&.customer&.email
 <span class="c"># Safe even if order or customer is nil</span></code></pre>
         </div>
         <div class="block">
-            <h3>Exception Handling (begin / rescue / ensure)</h3>
+            <h2>Exception Handling (begin / rescue / ensure)</h2>
             <ul>
                 <li>Used to handle runtime errors safely</li>
                 <li>Prevents program crashes</li>
@@ -68,7 +70,7 @@ end
 result = 10 / value rescue nil</code></pre>
         </div>
         <div class="block">
-            <h3>Ranges (.. and ...)</h3>
+            <h2>Ranges (.. and ...)</h2>
             <ul>
                 <li>Represent a sequence of values</li>
                 <li>Commonly used in loops and conditionals</li>
@@ -90,7 +92,7 @@ age = 25
 puts "Adult" if (18..65).include?(age)</code></pre>
         </div>
         <div class="block">
-            <h3>Blocks (do..end, { })</h3>
+            <h2>Blocks (do..end, { })</h2>
             <ul>
                 <li>Blocks are chunks of code passed to methods and executed later.</li>
                 <li>Use do..end for multi-line blocks.</li>
@@ -105,7 +107,26 @@ end
 [1, 2, 3].each { |n| puts n }</code></pre>
         </div>
         <div class="block">
-            <h3>Classes</h3>
+            <h2>Bang Methods (!)</h2>
+            <ul>
+                <li>Methods ending with ! change the original object in place (convention)</li>
+                <li>Non-bang versions usually return a new object instead</li>
+            </ul>
+            <pre><code>numbers = [3, 1, 2]
+numbers.sort     <span class="c"># returns a new array</span>
+numbers.sort!    <span class="c"># changes numbers in place</span></code></pre>
+        </div>
+        <div class="block">
+            <h2>Predicate Methods (?)</h2>
+            <ul>
+                <li>Methods ending with ? return true or false (convention)</li>
+            </ul>
+            <pre><code>5.even?      <span class="c"># false</span>
+6.even?      <span class="c"># true</span>
+name.empty?  <span class="c"># true/false</span></code></pre>
+        </div>
+        <div class="block">
+            <h2>Classes</h2>
             <ul>
                 <li>Blueprints for creating objects</li>
                 <li>Group data (variables) and behaviour (methods)</li>
@@ -118,11 +139,12 @@ end
 end</code></pre>
         </div>
         <div class="block">
-            <h3>Accessors (attr_reader, attr_writer, attr_accessor)</h3>
+            <h2>Accessors (attr_reader, attr_writer, attr_accessor)</h2>
             <ul>
                 <li>Create getter and/or setter methods automatically</li>
                 <li>Reduce repetitive code in classes</li>
                 <li>Used inside classes</li>
+                <li>They generate methods, not properties (Ruby has no properties)</li>
             </ul>
             <pre><code>class User
   attr_reader :name        <span class="c"># getter only</span>
@@ -136,11 +158,11 @@ end</code></pre>
 end</code></pre>
         </div>
         <div class="block">
-            <h3>Modules (namespacing & mixins)</h3>
+            <h2>Modules</h2>
+            <h3>Namespacing module</h3>
             <ul>
-                <li>Group related code and share behaviour</li>
+                <li>Group related code and constants</li>
                 <li>Used for <strong>namespacing</strong> (organising code)</li>
-                <li>Used as <strong>mixins</strong> (shared methods)</li>
                 <li>Cannot be instantiated</li>
             </ul>
             <pre><code><span class="c"># Namespacing</span>
@@ -148,10 +170,16 @@ module Payments
   TAX_RATE = 0.1
 end
 
-Payments::TAX_RATE
-
-<span class="c"># Mixin</span>
-module Printable
+Payments::TAX_RATE</code></pre>
+        </div>
+        <div class="block">
+            <h3>Mixins module</h3>
+            <ul>
+                <li>Used to share methods between classes</li>
+                <li>Methods become instance methods of the class</li>
+                <li>Included into classes using <code>include</code></li>
+            </ul>
+<pre><code>module Printable
   def print_name
     puts name
   end
@@ -213,11 +241,9 @@ puts data["name"]
             <h4>Rails</h4>
             <ul>
                 <li>Web application framework written in Ruby</li>
-                <li>Follows the <a href="mvc.html">MVC (Model View Controller)</a> pattern</li>
-                <li>Provides structure for building web apps quickly</li>
-                <li>Distributed as a gem but composed of many smaller gems</li>
+                <li>Follows <a href="mvc.html">MVC (Model View Controller)</a></li>
+                <li>Distributed as a gem using <code>gem install rails</code></li>
             </ul>
-            <pre><code>gem install rails</code></pre>
         </div>
     </div>
 </body>
