@@ -150,6 +150,11 @@ pre code {
     margin: 6mm;
   }
 
+  .topbar {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   /* Hide navigation in print */
   .nav {
     display: none !important;
