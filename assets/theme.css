@@ -4,12 +4,16 @@ body {
     line-height: 1.5;
 }
 
+:root {
+    --ruby-red: #b91c1c;
+}
+
 h1, h2, h3, h4 {
-    color: #1f4fd8;
+    color: var(--ruby-red);
 }
 
 a {
-    color: #1f4fd8;
+    color: #b91c1c;   /* Ruby red */
 }
 
 a:hover {
@@ -19,7 +23,7 @@ a:hover {
 /* Accessible focus state for keyboard navigation */
 a:focus,
 a:focus-visible {
-    outline: 2px solid #1f4fd8;
+    outline: 2px solid #b91c1c;
     outline-offset: 2px;
 }
 
@@ -66,11 +70,6 @@ h2, h3, h4, p, ul {
 ul {
   padding-left: 1.25rem;
   margin-bottom: 0.4rem;
-}
-
-/* Code block spacing */
-pre {
-  margin-bottom: 1rem; /* give code blocks a bit of breathing room */
 }
 
 h1 {
@@ -135,7 +134,7 @@ h4 {
 
 /* Inline code only */
 :not(pre) > code {
-  color: #2563eb;
+  color: #b91c1c;   /* Ruby red */
   font-weight: 500;
   white-space: nowrap;
 }
@@ -153,6 +152,10 @@ pre code {
 
   /* Hide navigation in print */
   .nav {
+    display: none !important;
+  }
+
+  .ruby-logo {
     display: none !important;
   }
 
@@ -235,6 +238,18 @@ pre code {
     margin: 0 0 10px 0;
   }
 
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ruby-logo {
+    height: 22px;
+    width: 22px;
+    flex-shrink: 0;
+  }
+
   /* Compact header: title + nav beside it (one line) */
   .topbar {
     display: flex;
@@ -248,16 +263,6 @@ pre code {
     font-size: 24px;
     margin: 0;
     line-height: 1.05;
-  }
-
-  .nav {
-    white-space: nowrap;
-    font-size: 13px;
-    margin: 0;
-  }
-
-  .nav a {
-    margin: 0;
   }
 
   h2 {
@@ -308,4 +313,70 @@ pre code {
   .cheatsheet {
     gap: 14px;
   }
+
+  .nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Current page text only */
+  .nav-current {
+    font-weight: 700;
+    color: #b91c1c;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #ef4444;
+    background: #ffffff;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.12s ease;
+  }
+
+  .btn.primary {
+    background: linear-gradient(
+      135deg,
+      #dc2626 0%,   /* darker ruby top-left */
+      #ef4444 45%,  /* core ruby */
+      #f87171 100%  /* lighter bottom-right */
+    );
+    color: #ffffff;
+  }
+
+  .btn.primary:hover {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.35),
+      0 6px 14px rgba(248, 113, 113, 0.45),
+      0 0 16px rgba(252, 165, 165, 0.55);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  
+  .btn.secondary {
+    background: #ffffff;
+    color: #b91c1c;              /* ruby red text */
+    border: 1px solid #b91c1c;   /* ruby red border */
+  }
+
+  .btn.secondary:hover {
+    box-shadow:
+      0 0 0 1px rgba(185, 28, 28, 0.15),
+      0 4px 10px rgba(185, 28, 28, 0.25);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
 }

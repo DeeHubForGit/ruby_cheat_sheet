@@ -1,15 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruby Cheat Sheet</title>
-    <link rel="stylesheet" href="assets/theme.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruby Cheat Sheet</title>
+  <link rel="stylesheet" href="assets/theme.css" />
+
+  <!-- Index page only styling (does not affect Page 1 or Page 2) -->
+    <style>
+    :root {
+        --ink: #0f172a;
+        --muted: #475569;
+        --panel: #ffffff;
+        --panel-2: #f1f5f9;
+        --border: #e2e8f0;
+        --accent: #b91c1c;   /* Ruby red */
+        --ruby-red: #b91c1c;
+        --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    body {
+        color: var(--ink);
+        background: radial-gradient(1200px 600px at 20% 0%, #e0f2fe 0%, #ffffff 60%) fixed;
+    }
+
+    .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 48px;
+    }
+
+    .hero {
+        background: linear-gradient(90deg, #1f2937 0%, #7f1d1d 25%, #b91c1c 100%);
+        color: #ffffff;
+        border-radius: 16px;
+        padding: 22px 22px 18px;
+        box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+        margin: 0 0 6px 0;
+        font-size: 34px;
+        line-height: 1.1;
+        color: #ffffff;
+    }
+
+    .hero p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 15px;
+        line-height: 1.35;
+    }
+
+    /* ensure all headings inside hero stay white */
+    .hero h1,
+    .hero h2,
+    .hero h3 {
+        color: #ffffff;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: var(--ruby-red);
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+    }
+
+    .card {
+        grid-column: span 12;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px 16px 14px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .card h2 {
+        margin: 0 0 6px 0;
+        font-size: 18px;
+    }
+
+    .card p {
+        margin: 0 0 12px 0;
+        color: var(--muted);
+        line-height: 1.35;
+        font-size: 14px;
+    }
+
+    .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+    }
+
+    .list {
+        margin: 10px 0 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.35;
+        font-size: 14px;
+    }
+
+    .list li + li {
+        margin-top: 6px;
+    }
+
+    @media (min-width: 820px) {
+        .card.two-col {
+        grid-column: span 6;
+        }
+    }
+
+    .footer-note {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    .hero-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .ruby-logo {
+        height: 42px;
+        width: 42px;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #f3f4f6;
+        color: #6b7280;
+        border: 1px solid rgba(185, 28, 28, 0.15);
+    }
+
+    </style>
+
 </head>
+
 <body>
-    <h1>Ruby Cheat Sheet</h1>
-    <p>Two-page Ruby cheat sheet covering core syntax and commonly used patterns.</p>
-    <p><a href="cheat-sheet-page1.html">Cheat Sheet - Page 1 (Essentials)</a></p>
-    <p><a href="cheat-sheet-page2.html">Cheat Sheet - Page 2 (More)</a></p>
+  <div class="wrap">
+    <div class="hero">
+        <div class="hero-title">
+            <img src="images/ruby-logo.png" alt="Ruby logo" class="ruby-logo" />
+            <h1>Ruby Cheat Sheet</h1>
+        </div>
+    </div>
+
+    <div class="grid">
+      <div class="card two-col">
+        <div class="pill">Cheat Sheet</div>
+        <h2>Page 1 Essentials</h2>
+        <p>Syntax and fundamentals you will use constantly.</p>
+        <div class="actions">
+          <a class="btn primary" href="cheat-sheet-page1.html">Open Page 1</a>
+        </div>
+      </div>
+
+      <div class="card two-col">
+        <div class="pill">Cheat Sheet</div>
+        <h2>Page 2 Advanced Core Concepts</h2>
+        <p>Ruby specifics and common patterns you will see in real code.</p>
+        <div class="actions">
+          <a class="btn primary" href="cheat-sheet-page2.html">Open Page 2</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="pill">Concepts</div>
+        <h2>Ruby and Rails structure</h2>
+        <p>High-level ideas that explain how Ruby and Rails applications are organised.</p>
+
+        <ul class="list">
+          <li><strong>Object Orientation:</strong> Ruby is object-oriented  Everything is an object, including numbers, strings and arrays.</li>
+          <li><strong>Rails:</strong> A web application framework written in Ruby that provides structure, conventions and tools for building web apps quickly.</li>
+          <li><strong>MVC (Model View Controller):</strong> The architectural pattern used by Rails to separate data, UI and application logic.</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn secondary" href="mvc.html">Open MVC diagram</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
 </html>
