@@ -35,7 +35,7 @@
     <div class="topbar">
         <h1 class="title">
             <img src="images/ruby-logo.png" alt="" class="ruby-logo">
-            Ruby Cheat Sheet - Page 2
+            Ruby Cheat Sheet 2
         </h1>
         <nav class="nav">
             <a class="btn primary" href="index.html">Home</a>
@@ -44,6 +44,27 @@
         </nav>
     </div>
     <div class="cheatsheet">
+        <div class="block">
+            <h2>Loops/Iteration (part 2)</h2>
+            <pre><code><span class="c"># while loop</span>
+count = 0
+while count < 3
+  puts count
+  count += 1
+end
+
+<span class="c"># until loop (opposite of while)</span>
+count = 0
+until count == 3
+  puts count
+  count += 1
+end
+
+<span class="c"># begin / end while (runs at least once)</span>
+begin
+  puts "Runs once"
+end while false</code></pre>
+        </div>
         <div class="block">
             <h2>Truthiness (nil vs false) (Ruby-specific)</h2>
             <ul>
@@ -81,25 +102,6 @@ user&.name
 
 order&.customer&.email
 <span class="c"># Safe even if order or customer is nil</span></code></pre>
-        </div>
-        <div class="block">
-            <h2>Exception Handling (begin / rescue / ensure)</h2>
-            <ul>
-                <li>Used to handle runtime errors safely</li>
-                <li>Prevents program crashes</li>
-                <li><code>rescue</code> catches errors</li>
-                <li><code>ensure</code> always runs (optional)</li>
-            </ul>
-            <pre><code>begin
-  result = 10 / 0
-rescue ZeroDivisionError
-  puts "Cannot divide by zero"
-ensure
-  puts "Done"
-end
-
-<span class="c"># Rescue shorthand (common, use sparingly)</span>
-result = 10 / value rescue nil</code></pre>
         </div>
         <div class="block">
             <h2>Ranges (.. and ...)</h2>
@@ -157,6 +159,25 @@ numbers.sort!    <span class="c"># changes numbers in place</span></code></pre>
 6.even?      <span class="c"># true</span>
 name.empty?  <span class="c"># true/false</span></code></pre>
         </div>
+                <div class="block">
+                        <h2>Exception Handling (begin / rescue / ensure)</h2>
+                        <ul>
+                                <li>Used to handle runtime errors safely</li>
+                                <li>Prevents program crashes</li>
+                                <li><code>rescue</code> catches errors</li>
+                                <li><code>ensure</code> always runs (optional)</li>
+                        </ul>
+                        <pre><code>begin
+    result = 10 / 0
+rescue ZeroDivisionError
+    puts "Cannot divide by zero"
+ensure
+    puts "Done"
+end
+
+<span class="c"># Rescue shorthand (common, use sparingly)</span>
+result = 10 / value rescue nil</code></pre>
+                </div>
         <div class="block">
             <h2>Classes</h2>
             <ul>
@@ -231,51 +252,15 @@ end</code></pre>
             <div class="gems">
                 <h3>Gems</h3>
                 <ul>
-                    <li>Reusable libraries that add features to Ruby</li>
-                    <li>Used to avoid writing everything from scratch</li>
-                    <li>Installed using the gem command</li>
-                    <li>Commonly used in Ruby and Rails projects</li>
+                    <li>See 
+                        <a href="reusable_code.html" target="_blank" rel="noopener">
+                            Reusable Code
+                        </a> to learn about libraries (gems) that save you time
+                    </li>
+                    <li>Use the gem command to install</li>
                 </ul>
                 <pre><code>gem install rails</code></pre>
-                <!-- NO UNNECESSARY DETAIL
-                <p><b>Common gems include:</b></p>
-                <ul>
-                    <li><strong>Rails</strong>: Web application framework.</li>
-                    <li><strong>RSpec</strong>: Testing Ruby code.</li>
-                    <li><strong>Devise</strong>: User authentication.</li>
-                    <li><strong>Puma</strong>: A web server for Ruby and Rails applications.</li>
-                </ul>
-                <p><b>Common Rails gems include:</b></p>
-                <ul>
-                    <li><strong>Active Record</strong>: Database interaction.</li>
-                    <li><strong>Action Mailer</strong>: Sending emails.</li>
-                    <li><strong>Active Job</strong>: Background job processing.</li>
-                    <li><strong>Active Storage</strong>: File uploads.</li>
-                </ul>
-                -->
             </div>
-        </div>
-        <div class="block">
-            <h4>Require / require_relative</h4>
-            <ul>
-                <li><code>require</code> loads installed libraries (standard library or gems)</li>
-                <li><code>require_relative</code> loads a local file relative to the current file's location</li>
-                <li>You usually put <code>require</code> lines at the top of a file</li>
-            </ul>
-            <pre><code>require "json"            <span class="c"># installed library</span>
-require_relative "helpers"      <span class="c"># local file</span>
-
-data = JSON.parse('{"name":"Joe"}')
-puts data["name"]
-</code></pre>
-        </div>
-        <div class="block">
-            <h4>Rails</h4>
-            <ul>
-                <li>Web application framework written in Ruby</li>
-                <li>Follows <a href="mvc.html">MVC (Model View Controller)</a></li>
-                <li>Distributed as a gem using <code>gem install rails</code></li>
-            </ul>
         </div>
     </div>
 </body>

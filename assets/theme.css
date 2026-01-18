@@ -264,7 +264,7 @@ pre code {
 
   /* Headings smaller */
   h1 {
-    font-size: 30px;
+    font-size: 1.45rem;
     margin: 0 0 10px 0;
   }
 
@@ -291,13 +291,18 @@ pre code {
     padding-bottom: 0;
   }
 
+  /* Cheat pages: slightly smaller title so it fits with browser UI (e.g. bookmarks bar) */
+  body.cheat-page .topbar h1 {
+    font-size: 22px !important;
+    line-height: 1.02 !important;
+  }
   body.cheat-page .topbar {
     gap: 8px;
     margin: 2px 0 6px 0;
   }
 
   .topbar h1 {
-    font-size: 24px;
+    font-size: 18px;
     margin: 0;
     line-height: 1.05;
   }

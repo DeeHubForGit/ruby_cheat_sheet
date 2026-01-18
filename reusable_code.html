@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reusable Code – Ruby Cheat Sheet</title>
+    <link rel="stylesheet" href="assets/theme.css">
+        
+    <style>
+        /* Space after code blocks on this page */
+        body.reusable-code pre {
+            margin-bottom: 12px;
+        }
+
+        /* Compact buttons */
+        .cheat-page .btn {
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            line-height: 1;
+            min-height: unset;
+        }
+
+        .topbar {
+            padding-top: 2px;
+            padding-bottom: 2px;
+            align-items: flex-start;
+        }
+
+        .topbar .nav {
+            margin-top: -2px;
+        }
+
+        .topbar h1 {
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body class="cheat-page reusable-code">
+    <div class="topbar">
+        <h1 class="title">
+            <img src="images/ruby-logo.png" alt="" class="ruby-logo">
+            Reusable Code
+        </h1>
+        <nav class="nav">
+            <a class="btn primary" href="index.html">Home</a>
+            <a class="btn primary" href="cheat-sheet-page1.html">Page 1</a>
+            <a class="btn primary" href="cheat-sheet-page2.html">Page 2</a>
+        </nav>
+    </div>
+    <div>
+        <div class="block">
+            <div class="gems">
+                <h2>Gems</h2>
+                <ul>
+                    <li>Reusable libraries that add features to Ruby</li>
+                    <li>Used to avoid writing everything from scratch</li>
+                    <li>Installed using the gem command</li>
+                    <li>Commonly used in Ruby and Rails projects</li>
+                </ul>
+                <pre><code>gem install rails</code></pre>
+                <h3>Gemfile & Bundler</h3>
+                <ul>
+                    <li>Projects list gems in a <code>Gemfile</code></li>
+                    <li><code>bundle install</code> installs all project dependencies</li>
+                    <li>Preferred over running <code>gem install</code> manually for projects</li>
+                </ul>
+                <pre><code>bundle install</code></pre>
+                <h3>Common Gems</h3>
+                <h4>Common Ruby gems:</h4>
+                <ul>
+                    <li><strong>Rails</strong>: Web application framework.</li>
+                    <li><strong>RSpec</strong>: Testing Ruby code.</li>
+                    <li><strong>Devise</strong>: User authentication.</li>
+                    <li><strong>Puma</strong>: A web server for Ruby and Rails applications.</li>
+                </ul>
+                <h4>Common Rails gems:</h4>
+                <ul>
+                    <li><strong>Active Record</strong>: Database interaction.</li>
+                    <li><strong>Action Mailer</strong>: Sending emails.</li>
+                    <li><strong>Active Job</strong>: Background job processing.</li>
+                    <li><strong>Active Storage</strong>: File uploads.</li>
+                </ul>
+                <br>
+            </div>
+        </div>
+        <div class="block">
+            <h3>Require / require_relative</h3>
+            <ul>
+                <li><code>require</code> loads installed libraries (standard library or gems)</li>
+                <li><code>require_relative</code> loads a local file relative to the current file's location</li>
+                <li>You usually put <code>require</code> lines at the top of a file</li>
+            </ul>
+            <pre><code>require "json"            <span class="c"># installed library</span>
+require_relative "helpers"      <span class="c"># local file</span>
+
+data = JSON.parse('{"name":"Joe"}')
+puts data["name"]</code></pre>
+        </div>
+        <div class="block">
+            <h3>Rails</h3>
+            <ul>
+                <li>Web application framework written in Ruby</li>
+                <li>Follows <a href="mvc.html">MVC (Model View Controller)</a></li>
+                <li>Distributed as a gem using <code>gem install rails</code></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
