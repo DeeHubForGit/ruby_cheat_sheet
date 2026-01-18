@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC – Ruby Cheat Sheet</title>
     <link rel="stylesheet" href="assets/theme.css">
 
@@ -13,6 +14,7 @@
             display: flex;
             gap: 12px;
             align-items: flex-start;
+            flex-wrap: nowrap;
         }
 
         .model-text {
@@ -64,9 +66,58 @@
             margin-bottom: 14px;
         }
 
+        /* Mobile layout: stack text above images and avoid overflow */
+        @media (max-width: 760px) {
+            body.mvc-page {
+                padding: 10px 12px;
+            }
+
+            body.mvc-page h2,
+            body.mvc-page h3 {
+                margin-top: 14px;
+            }
+
+            body.mvc-page h1 {
+                margin-top: 0;
+            }
+
+            .model-section,
+            .view-section,
+            .controller-section,
+            .mvc-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .model-text,
+            .view-text,
+            .controller-text,
+            .mvc-text {
+                max-width: none;
+            }
+
+            .model-diagram,
+            .view-diagram,
+            .controller-diagram,
+            .mvc-diagram {
+                flex: 0 0 auto;
+                width: 100%;
+                padding-top: 0;
+            }
+
+            .model-diagram img,
+            .view-diagram img,
+            .controller-diagram img,
+            .mvc-diagram img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
     </style>
 </head>
-<body>
+<body class="mvc-page">
 <h1>MVC</h1>
 <a href="index.html" class="btn primary back-btn">
   ← Back to Ruby Cheat Sheet
@@ -126,7 +177,7 @@
     <div class="mvc-text">
         <h2>MVC</h2>
         <p>Model View Controller (MVC) is a way of structuring an application so that responsibilities are clearly separated.</p>
-        <p>Each part has a single job, which makes the system easier to understand, test, and change.</p>
+        <p>Each part has a single job, which makes the system easier to understand, test and change.</p>
         <h3>How MVC works in practice</h3>
         <ol>
             <li>
