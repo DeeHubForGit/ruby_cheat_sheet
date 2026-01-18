@@ -256,6 +256,12 @@ pre code {
     line-height: 1.22;
   }
 
+  /* Cheat pages: use the full viewport and tighter spacing */
+  body.cheat-page {
+    margin: 0;
+    padding: 6px 10px 8px;
+  }
+
   /* Headings smaller */
   h1 {
     font-size: 30px;
@@ -285,6 +291,11 @@ pre code {
     padding-bottom: 0;
   }
 
+  body.cheat-page .topbar {
+    gap: 8px;
+    margin: 2px 0 6px 0;
+  }
+
   .topbar h1 {
     font-size: 24px;
     margin: 0;
@@ -296,9 +307,19 @@ pre code {
     margin: 0 0 6px 0;
   }
 
+  body.cheat-page h2 {
+    font-size: 18px;
+    margin: 0 0 4px 0;
+  }
+
   h3 {
     font-size: 16px;
     margin: 0 0 6px 0;
+  }
+
+  body.cheat-page h3 {
+    font-size: 15px;
+    margin: 0 0 4px 0;
   }
 
   /* Bullets smaller + tighter */
@@ -307,10 +328,20 @@ pre code {
     padding-left: 18px;
   }
 
+  body.cheat-page ul {
+    margin: 0 0 6px 0;
+    padding-left: 16px;
+  }
+
   li {
     font-size: 13px;
     margin: 0 0 3px 0;
     line-height: 1.18;
+  }
+
+  body.cheat-page li {
+    font-size: 12.5px;
+    margin: 0 0 2px 0;
   }
 
   /* Add space before the print section */
@@ -318,8 +349,18 @@ pre code {
     margin-top: 10px;
   }
 
+  /* Ensure cheat-page tightening doesn't remove this gap */
+  body.cheat-page .print-title {
+    margin-top: 10px;
+  }
+
   /* Gap before the Times bullet, without forcing wrapping */
   .times-item {
+    margin-top: 0.4rem;
+  }
+
+  /* Ensure cheat-page tightening doesn't remove this gap */
+  body.cheat-page li.times-item {
     margin-top: 0.4rem;
   }
   
@@ -328,10 +369,19 @@ pre code {
     margin-bottom: 12px;
   }
 
+  body.cheat-page .block {
+    margin-bottom: 8px;
+  }
+
   /* Tighter code blocks, but keep code font larger */
   pre {
     margin: 6px 0 0 0;
     padding: 8px 10px;
+  }
+
+  body.cheat-page pre {
+    margin: 4px 0 0 0;
+    padding: 6px 8px;
   }
 
   pre,
@@ -343,6 +393,10 @@ pre code {
   /* Optional: slightly reduce space between columns if you use grid gap */
   .cheatsheet {
     gap: 14px;
+  }
+
+  body.cheat-page .cheatsheet {
+    column-gap: 1rem;
   }
 
   .nav {
@@ -410,4 +464,18 @@ pre code {
     text-decoration: none;
   }
 
+
+}
+
+/* Column flow hints for wide screens (4 columns) */
+@media screen and (min-width: 1200px) {
+  body.cheat-page #screen-float {
+    break-before: column;
+    -webkit-column-break-before: always;
+  }
+
+  body.cheat-page #screen-hashes {
+    break-before: column;
+    -webkit-column-break-before: always;
+  }
 }

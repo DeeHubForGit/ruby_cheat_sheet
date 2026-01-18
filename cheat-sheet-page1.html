@@ -92,7 +92,7 @@ total_price = count * 5</code></pre>
             <pre><code>42
 -7</code></pre>
         </div>
-        <div class="block">
+        <div class="block" id="screen-float">
             <h3>Float (decimal numbers)</h3>
             <pre><code>3.14
 -0.001</code></pre>
@@ -141,8 +141,7 @@ numbers.reject { |n| n < 3 }   <span class="c"># [3, 4, 5]</span>
 numbers.find { |n| n > 3 }     <span class="c"># 4</span></code></pre>
             </div>
         </div>
-
-        <div class="block">
+        <div class="block" id="screen-hashes">
             <h2>Hashes</h2>
             <ul>
                 <li>Key–value data structure</li>
@@ -235,18 +234,16 @@ count < 5 || limit < 10   <span class="c"># either true</span>
         
         <div class="block">
             <h2>Loops/Iteration (most used only)</h2>
-            <ul>
-                <li><strong>Each</strong>: Iterates over an array:</li>
-            </ul>
-            <pre><code>orders.each do |order|
+            <pre><code><span class="c"># <strong>Each</strong>: Iterates over an array:</span>
+orders.each do |order|
     puts order[:id]
-end</code></pre>
-            <ul>
-                <li class="times-item"><strong>Times:</strong> Repeats a block X times</li>
-            </ul>
-            <pre><code>5.times do |i|
+end
+
+<span class="c"># <strong>Times:</strong> Repeats a block X times</span>
+5.times do |i|
     puts "Iteration #{i + 1}"
-end</code></pre>
+end
+<span class="c"># loops for while, do and until on page 2</span></code></pre>
         </div>
 
         <div class="block" id="print-methods">
