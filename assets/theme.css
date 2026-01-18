@@ -180,8 +180,13 @@ pre code {
     widows: 2;
   }
 
+  /* Keep related blocks together (e.g. Arrays + Enumerable) */
+  .print-keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   /* Allow the two largest sections to split if needed */
-  #print-enumerable,
   #print-methods {
     break-inside: auto !important;
     page-break-inside: auto !important;
@@ -217,7 +222,7 @@ pre code {
   }
 
   ul {
-    margin: 0 0 2mm 0 !important;
+    margin: 0 0 1.4mm 0 !important;
     padding-left: 14pt !important;
   }
 
@@ -225,9 +230,15 @@ pre code {
     margin: 0 0 0.8mm 0 !important;
   }
 
+  /* Tighter spacing above code samples */
   pre {
-    margin: 1mm 0 0 0 !important;
-    padding: 2mm !important;
+    margin: 0.4mm 0 0 0 !important;
+    padding: 1.6mm !important;
+  }
+
+  h3 + pre,
+  ul + pre {
+    margin-top: 0.2mm !important;
   }
 
   pre,

@@ -106,34 +106,50 @@ false</code></pre>
             <h3>Nil (represents no value)</h3>
             <pre><code>nil</code></pre>
         </div>
-        <div class="block">
-            <h2>Arrays</h2>
-            <ul>
-                <li>Ordered list of items</li>
-                <li>Indexed by position (starts at 0)</li>
-            </ul>
-            <pre><code><span class="c"># Create an array</span>
+        <div class="print-keep-together">
+            <div class="block" id="print-arrays">
+                <h2>Arrays</h2>
+                <ul>
+                    <li>Ordered list of items</li>
+                    <li>Indexed by position (starts at 0)</li>
+                </ul>
+                <pre><code><span class="c"># Create an array</span>
 numbers = [1, 2, 3]
 
-<span class="c"># Access elements (index starts at 0)</span>
+<span class="c"># Access element (index starts at 0)</span>
 numbers[0]   <span class="c"># 1</span>
-numbers[1]   <span class="c"># 2</span>
 
 <span class="c"># Add elements</span>
-numbers << 4        <span class="c"># append using <<</span>
-numbers.push(5)     <span class="c"># append using method</span>
+numbers << 4     <span class="c"># Ruby overloaded method</span>
+numbers.push(5)  <span class="c"># standard method</span>
 
 <span class="c"># Remove elements</span>
-numbers.pop         <span class="c"># removes last item</span></code></pre>
-        </div>
-        <div class="block">
-        <h2>Hashes</h2>
-        <ul>
-            <li>Key–value data structure</li>
-            <li>Keys are usually symbols or strings</li>
-        </ul>
+numbers.pop      <span class="c"># removes last item</span></code></pre>
+            </div>
 
-        <pre><code><span class="c"># Create a hash</span>
+            <div class="block" id="print-enumerable">
+                <h2>Common Enumerable Methods</h2>
+                <ul>
+                    <li>Used with arrays and collections</li>
+                    <li>Return new values, do not modify originals</li>
+                </ul>
+                <pre><code>numbers = [1, 2, 3, 4, 5]
+
+numbers.map { |n| n * 2 }      <span class="c"># [2, 4, 6, 8, 10]</span>
+numbers.select { |n| n.even? } <span class="c"># [2, 4]</span>
+numbers.reject { |n| n < 3 }   <span class="c"># [3, 4, 5]</span>
+numbers.find { |n| n > 3 }     <span class="c"># 4</span></code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2>Hashes</h2>
+            <ul>
+                <li>Key–value data structure</li>
+                <li>Keys are usually symbols or strings</li>
+            </ul>
+
+            <pre><code><span class="c"># Create a hash</span>
 user = {
   "name" => "Alice",
   "age"  => 25
@@ -159,12 +175,16 @@ user.delete("age")</code></pre>
         <div class="block">
             <h2>Conditionals</h2>
             <h3>if, elsif, else</h3>
-            <pre><code><span class="c"># Basic if statement</span>
+            <ul>
+                <li>Modifier form for simple one-liners</li>
+                <li>Standard (e.g. <code>if … end</code>) for multi-line logic</li>
+            </ul>
+            <pre><code><span class="c"># Standard if statement</span>
 if total > 40
     puts "Large order"
 end
 
-<span class="c"># Ruby-style one line</span>
+<span class="c"># Ruby-style modifier (one line)</span>
 puts "Large order" if total > 40
 
 <span class="c"># Using elsif and else</span>
@@ -179,7 +199,7 @@ end</code></pre>
         <div class="block">
             <h3>Case / When (conditional branching)</h3>
             <ul>
-                <li>Used to compare one value against many options</li>
+                <li>Compares one value against many options</li>
                 <li>Cleaner than long <code>if</code> / <code>elsif</code> chains</li>
                 <li>Uses <code>when</code> instead of <code>elsif</code></li>
             </ul>
@@ -200,21 +220,21 @@ end</code></pre>
                 <li>Used to compare values and in loops</li>
                 <li>Return true or false</li>
             </ul>
-            <pre><code>a = 10
-b = 5
+            <pre><code>count = 10
+limit = 5
 
-a == b     <span class="c"># false</span>
-a != b     <span class="c"># true</span>
-a > b      <span class="c"># true</span>
-a <= b     <span class="c"># false</span>
+count == limit     <span class="c"># equal? false</span>
+count != limit     <span class="c"># not equal? true</span>
+count > limit      <span class="c"># greater than? true</span>
+count <= limit     <span class="c"># less or equal? false</span>
 
-a > 5 && b < 10   <span class="c"># true</span>
-a < 5 || b < 10   <span class="c"># true</span>
-!false            <span class="c"># true</span></code></pre>
+count > 5 && limit < 10   <span class="c"># both true</span>
+count < 5 || limit < 10   <span class="c"># either true</span>
+!false            <span class="c"># negation → true</span></code></pre>
         </div>
         
         <div class="block">
-            <h2>Loops/Iteration</h2>
+            <h2>Loops/Iteration (most used only)</h2>
             <ul>
                 <li><strong>Each</strong>: Iterates over an array:</li>
             </ul>
@@ -222,25 +242,13 @@ a < 5 || b < 10   <span class="c"># true</span>
     puts order[:id]
 end</code></pre>
             <ul>
-                <li class="times-item"><strong>Times:</strong> Repeats a block a specified number of times</li>
+                <li class="times-item"><strong>Times:</strong> Repeats a block X times</li>
             </ul>
             <pre><code>5.times do |i|
     puts "Iteration #{i + 1}"
 end</code></pre>
         </div>
-        <div class="block" id="print-enumerable">
-            <h2>Common Enumerable Methods</h2>
-            <ul>
-                <li>Used with arrays and collections</li>
-                <li>Return new values, do not modify originals</li>
-            </ul>
-            <pre><code>numbers = [1, 2, 3, 4, 5]
 
-numbers.map { |n| n * 2 }      <span class="c"># [2, 4, 6, 8, 10]</span>
-numbers.select { |n| n.even? } <span class="c"># [2, 4]</span>
-numbers.reject { |n| n < 3 }   <span class="c"># [3, 4, 5]</span>
-numbers.find { |n| n > 3 }     <span class="c"># 4</span></code></pre>
-        </div>
         <div class="block" id="print-methods">
             <h2>Methods</h2>
             <ul>
